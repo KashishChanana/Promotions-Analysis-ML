@@ -8,7 +8,11 @@ def agglomerative_clustering(df_clusters, df):
     :return: Two clusters found after hierarchical clustering
     """
     # adjust n_clusters to the number obtained from elbow graphs
-    cluster = AgglomerativeClustering(n_clusters=2, affinity='euclidean', linkage='ward')
+
+    # changes made as a part of Advanced Software Engineering COMSW4156, taught by Prof. Gail Kaiser
+    n_clusters = 2
+
+    cluster = AgglomerativeClustering(n_clusters=n_clusters, affinity='euclidean', linkage='ward')
     cluster.fit_predict(df_clusters)
     df_clusters["label"] = cluster.labels_
 

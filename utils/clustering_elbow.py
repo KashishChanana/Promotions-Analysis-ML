@@ -12,29 +12,26 @@ def elbow_method(df_clusters):
     """
     distortions = []
     inertias = []
-    mapping1 = []
-    mapping2 = []
-    K = range(1, 10)
 
-    for k in K:
+    # code cleaning and refactoring as a part of Advanced Software Engineering COMSW4156, taught by Prof. Gail Kaiser
 
-        kmeanModel = KMeans(n_clusters=k).fit(df_clusters)
+    n_clusters = range(1, 10)
+
+    for n in n_clusters:
+
+        kmeanModel = KMeans(n_clusters=n).fit(df_clusters)
         kmeanModel.fit(df_clusters)
 
         distortions.append(sum(np.min(cdist(df_clusters, kmeanModel.cluster_centers_,
                                             'euclidean'), axis=1)) / df_clusters.shape[0])
         inertias.append(kmeanModel.inertia_)
 
-        mapping1.append(sum(np.min(cdist(df_clusters, kmeanModel.cluster_centers_,
-                                         'euclidean'), axis=1)) / df_clusters.shape[0])
-        mapping2.append(kmeanModel.inertia_)
-
-    plt.plot(K, mapping1, color='g', linewidth='3')
+    plt.plot(n_clusters, distortions, color='g', linewidth='3')
     plt.xlabel("Value of K")
     plt.ylabel("Squared Error (Cost)")
     plt.show()
 
-    plt.plot(K, mapping2, color='g', linewidth='3')
+    plt.plot(n_clusters, inertias, color='g', linewidth='3')
     plt.xlabel("Value of K")
     plt.ylabel("Inertia")
     plt.show()
