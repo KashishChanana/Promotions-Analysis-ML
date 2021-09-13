@@ -11,6 +11,7 @@ def plot_multicollinearity(df):
     sns.heatmap(df.corr(), annot=True, vmin=-1, vmax=1, fmt=".2f", cmap="coolwarm")
     plt.title("Feature Multicollinearity", fontsize="x-large")
     plt.xticks(rotation=45, ha="right");
+    plt.show()
 
 
 target = ["success"]

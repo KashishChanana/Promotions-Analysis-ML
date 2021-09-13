@@ -23,7 +23,6 @@ def comparison_plots(X_HAC_0, X_HAC_1):
                      'pre_dec_list_items', 'post_dec_promo_discount', 'post_dec_base_charge',
                      'post_dec_list_items']]
 
-
     ind = np.arange(2)
     idx = 1
     fig = plt.figure(figsize=(20, 20))

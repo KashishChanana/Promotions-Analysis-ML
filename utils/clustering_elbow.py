@@ -31,7 +31,7 @@ def elbow_method(df_clusters):
 
     plt.plot(K, mapping1, color='g', linewidth='3')
     plt.xlabel("Value of K")
-    plt.ylabel("Sqaured Error (Cost)")
+    plt.ylabel("Squared Error (Cost)")
     plt.show()
 
     plt.plot(K, mapping2, color='g', linewidth='3')

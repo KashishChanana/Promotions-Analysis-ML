@@ -2,7 +2,7 @@ from sklearn.metrics import accuracy_score, f1_score, recall_score, precision_sc
     confusion_matrix
 
 
-def classifier(clf, offer_id, X_train, X_test, y_train, y_test):
+def classifier_run(clf, offer_id, X_train, X_test, y_train, y_test):
 
     """
     Method for training classifier and predicting on test set.

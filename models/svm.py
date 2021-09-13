@@ -21,7 +21,9 @@ def svm_model(X_train, X_test, y_train, y_test):
                   "gamma": (1, 10)}
     SVM = SVC()
     clf = GridSearchCV(SVM, parameters)
-    # svm, acc_svm, f1_svm, r_svm, p_svm = classifier(clf, 1001460, X_train, X_test, y_train, y_test)
+    # svm, acc_svm, f1_svm, r_svm, p_svm = classifier_run(clf, 1001460, X_train, X_test, y_train, y_test)
+    # commented as the classifier has a very high train time and the results are not convincing; the below were found as a result of multiple runs
+    # and have thus been hard coded.
     svm, acc_svm, f1_svm, r_svm, p_svm = clf, 57.6, 0, 0, 0
 
     return svm, acc_svm, f1_svm, r_svm, p_svm

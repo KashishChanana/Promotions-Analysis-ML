@@ -26,6 +26,6 @@ def dt_model(X_train, X_test, y_train, y_test):
     DT = DecisionTreeClassifier(random_state=0)
     clf = GridSearchCV(DT, parameters, scoring="roc_auc", cv=4, n_jobs=4, verbose=2)
 
-    dt, acc, f1, recall, precision = classifier(clf, 1001460, X_train, X_test, y_train, y_test)
+    dt, acc, f1, recall, precision = classifier_run(clf, 1001460, X_train, X_test, y_train, y_test)
 
     return dt, acc, f1, recall, precision

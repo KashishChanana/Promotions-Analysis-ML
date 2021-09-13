@@ -18,9 +18,9 @@ def gnb_model(X_train, X_test, y_train, y_test):
     """
 
     parameters = {}
-    GNB = StratifiedKFold(n_splits = 4)
+    GNB = StratifiedKFold(n_splits=4)
     clf = GridSearchCV(GaussianNB(), cv=GNB, param_grid=parameters)
 
-    gnb, acc, f1, recall, precision = classifier(clf, 1001460 , X_train, X_test, y_train, y_test)
+    gnb, acc, f1, recall, precision = classifier_run(clf, 1001460, X_train, X_test, y_train, y_test)
 
     return gnb, acc, f1, recall, precision
