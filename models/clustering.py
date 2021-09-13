@@ -7,6 +7,7 @@ def agglomerative_clustering(df_clusters, df):
     :param df: master dataframe containing feature and target columns
     :return: Two clusters found after hierarchical clustering
     """
+    # adjust n_clusters to the number obtained from elbow graphs
     cluster = AgglomerativeClustering(n_clusters=2, affinity='euclidean', linkage='ward')
     cluster.fit_predict(df_clusters)
     df_clusters["label"] = cluster.labels_
@@ -14,4 +15,10 @@ def agglomerative_clustering(df_clusters, df):
     X_HAC_0 = df[df_clusters["label"] == 0]
     X_HAC_1 = df[df_clusters["label"] == 1]
 
-    return X_HAC_0 , X_HAC_1
+    X_HAC_0.drop(columns=["success"], inplace=True)
+    X_HAC_1.drop(columns=["success"], inplace=True)
+
+    X_HAC_0.reset_index(drop=True)
+    X_HAC_1.reset_index(drop=True)
+
+    return X_HAC_0, X_HAC_1

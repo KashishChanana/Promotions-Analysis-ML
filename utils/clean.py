@@ -10,6 +10,7 @@ def clean(df_seller_pre, df_seller_post, df_seller_active, df_characteristics):
     :return: concatenated dataframe
     """
     df = df_characteristics
+
     df["dec_promo_discount"] = df_seller_active["sum(TOTAL_PROMO_DISCOUNT)"]
     df["dec_base_charge"] = df_seller_active["sum(TOTAL_BASE_CHARGE)"]
     df["dec_list_items"] = df_seller_active["uniqExact(ITEM_ID)"]
@@ -54,11 +55,13 @@ def clean(df_seller_pre, df_seller_post, df_seller_active, df_characteristics):
     df["post_dec_base_charge"] = post_dec_base_charge
     df["post_dec_list_items"] = post_dec_list_items
 
-    df["success"] = [1 if df.iloc[idx]["dec_list_items"] >= 1.5 * df.iloc[idx]["pre_dec_list_items"] and df.iloc[idx][
-        "post_dec_list_items"] else 0 for idx in range((df.shape[0]))]
-
+    # data cleaning
     df['SELLER_DATE_OF_REGISTRATION'] = pd.to_datetime(df['SELLER_DATE_OF_REGISTRATION'])
     df['SELLER_SPS_PROGRAM'] = df['SELLER_SPS_PROGRAM'].astype(str)
     df['SELLER_ZONE'] = df['SELLER_ZONE'].astype(str)
+
+    # defining the success metric
+    df["success"] = [1 if df.iloc[idx]["dec_list_items"] >= 1.5 * df.iloc[idx]["pre_dec_list_items"] and df.iloc[idx][
+        "post_dec_list_items"] else 0 for idx in range((df.shape[0]))]
 
     return df

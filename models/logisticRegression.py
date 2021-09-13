@@ -20,6 +20,6 @@ def lr_model(X_train, X_test, y_train, y_test):
                   "C": [1, 10, 100, 1000]}
     LogReg = LogisticRegression(solver='liblinear', random_state=42)
     clf = GridSearchCV(LogReg, parameters, cv=3, n_jobs=-1, verbose=3)
-    logreg, acc, f1, recall, precision = classifier(clf, 1001460, X_train, X_test, y_train, y_test)
+    logreg, acc, f1, recall, precision = classifier_run(clf, 1001460, X_train, X_test, y_train, y_test)
 
     return logreg, acc, f1, recall, precision

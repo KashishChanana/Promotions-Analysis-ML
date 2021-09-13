@@ -23,6 +23,6 @@ def knn_model(X_train, X_test, y_train, y_test):
     KNN = KNeighborsClassifier()
     clf = GridSearchCV(KNN, parameters, scoring='roc_auc', cv=4, n_jobs=4, verbose=2)
 
-    knn, acc, f1, recall, precision = classifier(clf, 1001460, X_train, X_test, y_train, y_test)
+    knn, acc, f1, recall, precision = classifier_run(clf, 1001460, X_train, X_test, y_train, y_test)
 
     return knn, acc, f1, recall, precision
